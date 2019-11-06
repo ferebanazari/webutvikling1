@@ -1,0 +1,95 @@
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #ebe6e6;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 5vh 5vw 5vh 5vw;
+    margin-bottom: 50px;
+}
+
+
+.doneBtn {
+    font-size: 16pt;
+    background-color: rgb(46, 168, 46);
+    padding: 10px;
+    color: #fff;
+    border-radius: 10px;
+    align-self: flex-end;
+
+}
+
+.caseContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+
+}
+
+.caseText {
+    width: 40vw;
+    margin-left: 40px;
+
+}
+
+.caseImg {
+    height: 30vh;
+    width: auto;
+}
+
+h1 {
+    margin-left: 50px;
+}
+
+h2 {
+    margin-left: 50px;
+}
+
+footer {
+    background-color: gray;
+    margin-top: auto;
+    width: 100vw;
+    text-align: center;
+}
+
+.caseDate {
+    margin-left: 500px;
+    margin-top: 15px;
+    font-size: 3vh;
+
+}
+
+.caseText {
+    font-size: 3vh;
+    align-self: center;
+}
+
+header {
+    list-style-type: none;
+    width: 100%;
+    background-color: #064580;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    height: 10vh;
+    align-items: center;
+    border-bottom: 1px solid rgb(255, 242, 63);
+}
+
+header div a {
+    display: flex;
+    color: #fff;
+    text-decoration: none;
+    margin-right: 15px;
+    font-size: large;
+    font-weight: 500;
+}

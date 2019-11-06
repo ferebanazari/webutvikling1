@@ -1,29 +1,75 @@
 <!doctype html>
 
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
+    <meta charset="utf-8">
 
-  <title>PST</title>
-  <link rel="icon" href="img/PST.jpg" type="image/jpg" sizes="16x16">
-  <meta name="description" content="PST nettside">
-  <meta name="author" content="Fereba Nazari">
+    <title>PST</title>
+    <link rel="icon" href="img/PST.jpg" type="image/jpg" sizes="16x16">
+    <meta name="description" content="PST nettside">
+    <meta name="author" content="Fereba Nazari">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
 
-  <link rel="stylesheet" href="css/styles.css">
- 
+
 </head>
+
 
 <body>
     <header>
-        <h3>This is a header</h1>
+        <div><a href="/index.html">Hjem</a></div>
+        <div><a href="./pages/manageCases.html">Admistrere saker</a></div>
+        <div><a href="./pages/newCaseForm.html">Opprette sak</a></div>
     </header>
-    <div class="content">
-        <h1>PST nettside</h1>
-        <p>This is Fereba</p>   
-    </div>
-    
-  <script src="js/scripts.js"></script>
+    <div class="banner">
+        <h1>POLITIETS SIKKERHETSTJENESTE</h1>
+
+        <img id ="banner-img" class="bannerImg" src="./img/logo_print.png">
+        </div>
+        <div class="container">
+            <div class="content" id="content">
+                <!--
+            oppretter elementer fra JSON i script
+        -->
+            </div>
+        </div>
+        <footer>
+            <p>Politiets sikkerhetstjeneste - Postboks 4773 Nydalen - 0421 Oslo</p>
+            <a href="E-post: post@pst.politiet.no ">post@pst.politiet.no</a>
+            <p> Telefon 23 30 50 00</p>
+        </footer>
+        <script src="./js/jquery-3.4.1.js">
+        </script>
+        <script src="./js/TweenMax.min.js"></script>
+        <script>
+        const $bannerImg = $("#banner-img");
+        TweenMax.from($bannerImg, 5, {
+            x: 1000,
+            rotation: 720,
+            delay: 2
+        });
+
+        </script>
+
+        <script src="js/scripts.js"></script>
+        <script>
+
+
+        </script>
+        <script>
+        var cases = JSON.parse(localStorage.getItem("cases"));
+        var app = document.querySelector('#content');
+        app.innerHTML = cases.map(function(currentCase, index) {
+            console.log(currentCase);
+            return '<div class="caseContainer"><img class="caseImg" src="./img/' + currentCase.img +
+                '" alt="Saksbilde"><div><p class="caseTitle">' + currentCase.title.substring(0, 12) + '...' + '</p>' +
+                '<p class="caseType">' + currentCase.type +
+                '</p></div><div class="readMoreBtn"' +
+                'onclick="readMore(\'' + index + '\',\'' + currentCase.title + '\', \'' + currentCase.type + '\', \'../img/' + currentCase.img + '\',\' + currentCase.date + \',\'' + currentCase.active + '\')">Les mer</div></div>';
+        }).join('')
+
+        </script>
 </body>
+
 </html>
-
-

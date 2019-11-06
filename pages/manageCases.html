@@ -1,0 +1,58 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>PST</title>
+
+    <meta name="description" content="PST nettside">
+    <meta name="author" content="Fereba Nazari">
+    <link rel="stylesheet" href="../css/manageCases.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <script src="scripts/jquery-3.4.1.js"></script>
+    <script src="scripts/TweenMax.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div><a href="../index.html">Hjem</a></div>
+        <div><a href="./manageCases.html">Admistrere saker</a></div>
+        <div><a href="./newCaseForm.html">Opprette sak</a></div>
+    </header>
+    <div class="banner">
+        <h1>Admistrere saker</h1>
+    </div>
+    <div class="content" id="content">
+    </div>
+    <footer>
+        <p>Politiets sikkerhetstjeneste - Postboks 4773 Nydalen - 0421 Oslo</p>
+        <a href="E-post: post@pst.politiet.no ">post@pst.politiet.no</a>
+        <p> Telefon 23 30 50 00</p>
+    </footer>
+    <script>
+    var cases = JSON.parse(localStorage.getItem("cases"));
+    var app = document.querySelector('#content');
+    app.innerHTML = cases.map(function(currentCase, index) {
+        console.log(currentCase);
+        return '<div class="caseContainer"><p class="caseTitle">' + currentCase.title + '</p>' +
+            '<div class="buttonsContainer"><button class="editCase" onclick=(editCase(\'' + index + '\'))>ENDRE</button><button class="deleteCase" onclick=(deleteCase(\'' + index + '\'))>SLETT</button></div></div>'
+    }).join('')
+
+    function editCase(index) {
+        localStorage.setItem("index", index);
+        window.open("./editCase.html", "_self");
+
+    }
+
+    function deleteCase(index) {
+        cases.splice(index, 1);
+        localStorage.setItem("cases", JSON.stringify(cases));
+        location.reload();
+    }
+
+    </script>
+</body>
+
+</html>
